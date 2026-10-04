@@ -21,10 +21,15 @@
    updating these six lines re-colours the whole page.
 ===================================================================== */
 :root{
-  --navy:#1B2A4A;
-  --navy-deep:#101B33;
-  --gold:#B3862C;
-  --paper:#FBFAF7;
+  --navy:#16335E;
+  --navy-deep:#0E2340;
+  --black:#111111;
+  --green:#2E6B2E;
+  --green-dark:#1E4E1E;
+  --green-light:#4E9A4E;
+  --gold:var(--green);          /* kept as an alias so existing rules below still work */
+  --paper:#FFFFFF;
+  --paper-soft:#F6F8F6;
   --ink:#1D2126;
   --soft:#565D66;
   --hair:#E2E5E9;
@@ -36,7 +41,7 @@
 html{scroll-behavior:smooth;}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 [id]{scroll-margin-top:76px;}
-body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65;}
+body{margin:0; background:var(--paper-soft); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65;}
 h1,h2,h3{margin:0; font-family:var(--serif); font-weight:600; line-height:1.2;}
 a{color:var(--navy);}
 a:hover{color:var(--gold);}
@@ -48,18 +53,18 @@ p{margin:0 0 16px; max-width:68ch; color:var(--soft);}
 .skip:focus{left:8px;}
 
 /* ---------- Top bar: university identity ---------- */
-.univ-bar{background:var(--navy-deep); color:rgba(255,255,255,.78); font-size:13px; padding:7px 0;}
+.univ-bar{background:var(--black); color:rgba(255,255,255,.82); font-size:13px; padding:7px 0;}
 .univ-bar .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;}
 .univ-bar a{color:rgba(255,255,255,.85); text-decoration:none;}
 .univ-bar a:hover{color:#fff; text-decoration:underline;}
 
 /* ---------- Nav ---------- */
-nav{position:sticky; top:0; z-index:50; background:var(--navy); box-shadow:0 1px 0 rgba(0,0,0,.08);}
+nav{position:sticky; top:0; z-index:50; background:var(--green); box-shadow:0 1px 0 rgba(0,0,0,.15);}
 .nav-inner{max-width:var(--maxw); margin:0 auto; padding:0 28px; display:flex; align-items:center; justify-content:space-between; height:58px;}
 .nav-name{color:#fff; font-family:var(--serif); font-weight:600; font-size:17px; text-decoration:none;}
 .tabs{display:flex; align-items:center; gap:22px; list-style:none; margin:0; padding:0;}
 .tabs a{color:rgba(255,255,255,.82); font-size:14px; font-weight:500; text-decoration:none; padding:4px 0; border-bottom:2px solid transparent;}
-.tabs a:hover{color:#fff; border-bottom-color:var(--gold);}
+.tabs a:hover{color:#fff; border-bottom-color:#fff;}
 #nav-toggle{position:absolute; opacity:0; pointer-events:none;}
 .burger{display:none; color:#fff; background:none; border:1px solid rgba(255,255,255,.5); font-size:13px; padding:7px 11px; cursor:pointer;}
 
@@ -204,16 +209,16 @@ footer a:hover{color:#fff;}
       <h1>Buannel Hall of Residence</h1>
       <p class="meaning">Named after the birthplace of animals and the abode of fairies in Mizo mythology.</p>
       <p>
-        Buannel Hall of Residence is a hostel for men research scholars, established in
-        August 2017. It is located near the Department of Management in the Mizoram University campus, and
+        Buannel Hall of Residence is a temporary hostel for men research scholars, established in
+        August 2017. It is located near the Basketball Court on the Mizoram University campus, and
         is equipped with a warden's quarter. Every student is provided with a study table, a chair,
         and a bed, and each room has an attached cupboard and book-shelf.
       </p>
       <div class="fact-row">
         <div class="fact"><div class="fact-num">2017</div><div class="fact-label">Established (August)</div></div>
-        <div class="fact"><div class="fact-num">xyz</div><div class="fact-label">Seat capacity</div></div>
+        <div class="fact"><div class="fact-num">39</div><div class="fact-label">Seat capacity</div></div>
         <div class="fact"><div class="fact-num">Men</div><div class="fact-label">Research scholars</div></div>
-        <div class="fact"><div class="fact-num">MZU</div><div class="fact-label">Near Management department</div></div>
+        <div class="fact"><div class="fact-num">MZU</div><div class="fact-label">Near Basketball Court</div></div>
       </div>
     </div>
   </div>
@@ -226,10 +231,11 @@ footer a:hover{color:#fff;}
   <p>
     Buannel takes its name from Mizo mythology, where it is described as the birthplace of animals
     and the abode of fairies. As one of the Mizoram University's twelve halls of residence, Buannel
-    provides  accommodation for men research scholars pursuing research at the University.
+    provides temporary accommodation for men pursuing research at the University, in a setting close
+    to the Basketball Court on campus.
   </p>
   <p>
-    The hall is....... by design — with xyz seats, it is one of the more
+    The hall is a small, closely-knit community by design — with 39 seats, it is one of the more
     compact halls of residence at MZU, and is overseen by a resident warden from the University
     faculty, supported by student office bearers elected or appointed from among the residents.
   </p>
