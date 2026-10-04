@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buannel Hall of Residence — Mizoram University</title>
-<meta name="description" content="Buannel Hall of Residence, Mizoram University — a hostel for men research scholars, located near the Basketball Court on the MZU campus.">
+<meta name="description" content="Buannel Hall of Residence, Mizoram University — a boys' hostel located near the Department of Management on the MZU campus.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -74,7 +74,7 @@ nav{position:sticky; top:0; z-index:50; background:var(--green); box-shadow:0 1p
 .hero-kicker{font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;}
 .hero h1{font-size:clamp(1.9rem,4.2vw,2.7rem); color:var(--navy); margin-bottom:8px;}
 .hero .meaning{font-style:italic; color:var(--soft); font-size:1.02rem; max-width:56ch; margin-bottom:22px;}
-.fact-row{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--hair);}
+.fact-row{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--hair);}
 .fact{padding:18px 20px 0; border-left:1px solid var(--hair);}
 .fact:first-child{border-left:none; padding-left:0;}
 .fact-num{font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--navy); line-height:1;}
@@ -96,16 +96,8 @@ h2.section-title{font-size:1.55rem; color:var(--navy); margin-bottom:22px; paddi
   .bearer:nth-child(odd){border-right:none;}
 }
 
-/* ---------- Facilities ---------- */
-.fac-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-.fac{border-top:3px solid var(--navy); padding-top:12px;}
-.fac h3{font-size:1.02rem; color:var(--navy); margin-bottom:5px;}
-.fac p{font-size:.94rem; margin:0;}
-@media (max-width:760px){.fac-grid{grid-template-columns:1fr 1fr;}}
-@media (max-width:480px){.fac-grid{grid-template-columns:1fr;}}
-
 /* ---------- Gallery: honestly empty, ready for real photos ---------- */
-.gallery-note{background:#FBF6E9; border:1px dashed #D9C68A; padding:16px 20px; font-size:14px; color:#6B5A22; margin-bottom:24px;}
+.gallery-note{background:#fff; border:1px solid var(--hair); padding:16px 20px; font-size:14px; color:var(--soft); margin-bottom:24px;}
 .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
 .gallery-slot{aspect-ratio:4/3; background:repeating-linear-gradient(45deg,#EEF0F2,#EEF0F2 10px,#F6F7F8 10px,#F6F7F8 20px); border:1px dashed var(--hair); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:13px; text-align:center; padding:10px;}
 .gallery-photo{aspect-ratio:4/3; margin:0; overflow:hidden; border:1px solid var(--hair); background:#EEF0F2;}
@@ -144,11 +136,10 @@ footer a:hover{color:#fff;}
 
 /* ---------- Meet the Warden ---------- */
 .warden-feature{display:grid; grid-template-columns:180px 1fr; gap:32px; align-items:center;}
-.warden-photo{width:180px; height:180px; border-radius:50%; overflow:hidden; background:var(--hair); border:4px solid #fff; box-shadow:0 8px 20px -10px rgba(16,27,51,.4); flex:none;}
+.warden-photo{width:180px; height:180px; border-radius:50%; overflow:hidden; background:var(--hair); border:4px solid #fff; box-shadow:0 8px 20px -10px rgba(16,27,51,.4); flex:none; position:relative;}
 .warden-photo img{width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .25s ease;}
 .warden-photo img.is-loaded{opacity:1;}
-.warden-photo:not(:has(img.is-loaded)){display:flex; align-items:center; justify-content:center;}
-.warden-photo:not(:has(img.is-loaded))::after{content:"Photo not yet uploaded"; font-size:11.5px; color:var(--soft); text-align:center; padding:0 14px;}
+.warden-photo:not(:has(img.is-loaded))::after{content:"Photo not yet uploaded"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:11.5px; color:var(--soft); text-align:center; padding:0 14px;}
 .warden-text h3{font-size:1.3rem; color:var(--navy); margin-bottom:4px;}
 .warden-role{font-size:13px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;}
 @media (max-width:600px){.warden-feature{grid-template-columns:1fr; text-align:center; justify-items:center;}}
@@ -166,6 +157,12 @@ footer a:hover{color:#fff;}
 .person-card .p-role{font-size:12px; color:var(--soft); margin-top:2px;}
 @media (max-width:760px){.person-grid{grid-template-columns:repeat(3,1fr);}}
 @media (max-width:520px){.person-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){
+  .fact-row{grid-template-columns:1fr;}
+  .fact{border-left:none; border-top:1px solid var(--hair); padding:14px 0;}
+  .fact:first-child{border-top:none; padding-top:18px;}
+}
+[hidden]{display:none !important;}
 </style>
 </head>
 <body>
@@ -192,7 +189,6 @@ footer a:hover{color:#fff;}
       <li><a href="#warden">Warden</a></li>
       <li><a href="#committee">Committee</a></li>
       <li><a href="#residents">Residents</a></li>
-      <li><a href="#facilities">Facilities</a></li>
       <li><a href="#activities">Activities</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -205,20 +201,17 @@ footer a:hover{color:#fff;}
 <div id="top"></div>
   <div class="wrap">
     <div class="hero-card">
-      <p class="hero-kicker">Hall of Residence · Men · Research Scholars</p>
+      <p class="hero-kicker">Hall of Residence · Boys</p>
       <h1>Buannel Hall of Residence</h1>
       <p class="meaning">Named after the birthplace of animals and the abode of fairies in Mizo mythology.</p>
       <p>
-        Buannel Hall of Residence is a temporary hostel for men research scholars, established in
-        August 2017. It is located near the Basketball Court on the Mizoram University campus, and
-        is equipped with a warden's quarter. Every student is provided with a study table, a chair,
-        and a bed, and each room has an attached cupboard and book-shelf.
+        Buannel Hall of Residence is a full-fledged boys' hostel of Mizoram University, located
+        near the Department of Management on the MZU campus.
       </p>
       <div class="fact-row">
-        <div class="fact"><div class="fact-num">2017</div><div class="fact-label">Established (August)</div></div>
-        <div class="fact"><div class="fact-num">39</div><div class="fact-label">Seat capacity</div></div>
-        <div class="fact"><div class="fact-num">Men</div><div class="fact-label">Research scholars</div></div>
-        <div class="fact"><div class="fact-num">MZU</div><div class="fact-label">Near Basketball Court</div></div>
+        <div class="fact"><div class="fact-num">Boys' hostel</div><div class="fact-label">Full-fledged hall of residence</div></div>
+        <div class="fact"><div class="fact-num">Dept. of Management</div><div class="fact-label">Located near</div></div>
+        <div class="fact"><div class="fact-num">Dr. John Lama</div><div class="fact-label">Warden · Dept. of Education</div></div>
       </div>
     </div>
   </div>
@@ -230,32 +223,35 @@ footer a:hover{color:#fff;}
   <h2 class="section-title">About the hall</h2>
   <p>
     Buannel takes its name from Mizo mythology, where it is described as the birthplace of animals
-    and the abode of fairies. As one of the Mizoram University's twelve halls of residence, Buannel
-    provides temporary accommodation for men pursuing research at the University, in a setting close
-    to the Basketball Court on campus.
+    and the abode of fairies. Today it is a full-fledged hostel of Mizoram University for boys,
+    located near the Department of Management on the campus.
   </p>
   <p>
-    The hall is a small, closely-knit community by design — with 39 seats, it is one of the more
-    compact halls of residence at MZU, and is overseen by a resident warden from the University
-    faculty, supported by student office bearers elected or appointed from among the residents.
+    The hall is overseen by its Warden, Dr. John Lama of the Department of Education, and is
+    supported by a student committee made up of the Prefect, Assistant Prefect, Mess Secretary
+    and Assistant Mess Secretary.
   </p>
 </section>
 
 <section id="warden">
   <h2 class="section-title">Meet the Warden</h2>
   <div class="warden-feature">
-    <div class="warden-photo"><img id="warden-photo" src="" alt="Warden John Lama"></div>
+    <div class="warden-photo"><img id="warden-photo" src="" alt="Dr. John Lama, Warden of Buannel (Boys)"></div>
     <div class="warden-text">
-      <p class="warden-role">Warden, Buannel Hall of Residence</p>
-      <h3>John Lama</h3>
-      <p>Full designation and department to be confirmed before publishing.</p>
+      <p class="warden-role">Warden · Buannel (Boys)</p>
+      <h3>Dr. John Lama</h3>
+      <p>Department of Education, Mizoram University</p>
+      <p>
+        Phone: <a href="tel:+916009270446">6009270446</a><br>
+        Email: <a href="mailto:johnlama@mzu.edu.in">johnlama@mzu.edu.in</a>
+      </p>
     </div>
   </div>
 </section>
 
 <section id="committee">
   <h2 class="section-title">Know your Local Committee</h2>
-  <p class="pub-note" style="font-family:inherit; color:var(--soft); margin-bottom:22px;">Elected and appointed student office bearers of Buannel Hall of Residence.</p>
+  <p class="pub-note" style="font-family:inherit; color:var(--soft); margin-bottom:22px;">Student office bearers of Buannel Hall of Residence.</p>
   <div class="person-grid">
     <div class="person-card">
       <div class="photo-wrap"><img id="photo-prefect" src="" alt="Demminthang Singsit"></div>
@@ -286,18 +282,6 @@ footer a:hover{color:#fff;}
   <div class="person-grid" id="residents-grid"></div>
 </section>
 
-<section id="facilities">
-  <h2 class="section-title">Facilities</h2>
-  <div class="fac-grid">
-    <div class="fac"><h3>Study table</h3><p>Provided to every resident.</p></div>
-    <div class="fac"><h3>Chair</h3><p>Provided to every resident.</p></div>
-    <div class="fac"><h3>Bed</h3><p>Provided to every resident.</p></div>
-    <div class="fac"><h3>Attached cupboard</h3><p>Fitted in every room.</p></div>
-    <div class="fac"><h3>Book-shelf</h3><p>Fitted in every room.</p></div>
-    <div class="fac"><h3>Warden's quarter</h3><p>On the hall premises.</p></div>
-  </div>
-</section>
-
 <section id="activities">
   <h2 class="section-title">Activities</h2>
   <p class="gallery-note" id="activities-note">Loading…</p>
@@ -309,14 +293,14 @@ footer a:hover{color:#fff;}
   <div class="contact-grid">
     <div class="contact-block">
       <h3>Location</h3>
-      <p>Buannel Hall of Residence, Mizoram University campus, near the Basketball Court, Tanhril, Aizawl, Mizoram.</p>
+      <p>Buannel Hall of Residence, Mizoram University campus, near the Department of Management, Tanhril, Aizawl, Mizoram.</p>
     </div>
     <div class="contact-block">
-      <h3>Administration</h3>
+      <h3>Warden's office</h3>
       <p>
-        Halls of residence at Mizoram University are coordinated by the Office of the Dean, Students' Welfare.<br>
-        <strong>Prof. Lalngurliana Sailo</strong>, Dean, Students' Welfare<br>
-        <a href="mailto:dean.sw@mzu.edu.in">dean.sw@mzu.edu.in</a> · 9774099163
+        <strong>Dr. John Lama</strong>, Warden, Buannel (Boys)<br>
+        Department of Education<br>
+        <a href="tel:+916009270446">6009270446</a> · <a href="mailto:johnlama@mzu.edu.in">johnlama@mzu.edu.in</a>
       </p>
     </div>
   </div>
