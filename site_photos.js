@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------
-   Loads every photo on this page from the buannel-photos GitHub repo.
+   Loads every photo on this page from this GitHub repo (buannelhostel.github.io).
    Nothing here is hardcoded to a specific image — upload a file with
    the right name (see the folder structure in the setup guide) and it
    appears. Nothing uploaded yet -> the page falls back cleanly.
@@ -7,7 +7,7 @@
    SETUP: replace this line with your real GitHub username.
 --------------------------------------------------------------------- */
 const GH_USER = 'buannelhostel';
-const GH_REPO = 'buannelhostel';
+const GH_REPO = 'buannelhostel.github.io';
 const RAW_BASE = 'https://raw.githubusercontent.com/' + GH_USER + '/' + GH_REPO + '/main/';
 const API_BASE = 'https://api.github.com/repos/' + GH_USER + '/' + GH_REPO + '/contents/';
 const EXTS = ['jpg', 'jpeg', 'png', 'webp'];
@@ -62,10 +62,12 @@ function loadFolder(path, render) {
   if (!isConfigured()) { render([], 'unconfigured'); return; }
   fetch(API_BASE + path)
     .then(function (res) {
+      if (res.status === 404) return null;            /* folder not created yet = just empty */
       if (!res.ok) throw new Error('status ' + res.status);
       return res.json();
     })
     .then(function (files) {
+      if (files === null) { render([], 'empty'); return; }
       var images = files.filter(function (f) { return f.type === 'file' && IMG_EXT_RE.test(f.name); });
       images.sort(function (a, b) { return a.name.localeCompare(b.name); });
       render(images, images.length ? 'ok' : 'empty');
@@ -101,12 +103,17 @@ document.addEventListener('DOMContentLoaded', function () {
           img.src = f.download_url;
           residentsGrid.appendChild(card);
         });
-        if (residentsNote) residentsNote.textContent = images.length + ' resident' + (images.length === 1 ? '' : 's') + ' shown, loaded automatically.';
+        if (residentsNote) residentsNote.hidden = true;
       } else {
+        /* ADMIN: add photos to profiles/residents in this repo. The filename becomes the name
+           shown, e.g. lalrinliana-sailo.jpg -> "Lalrinliana Sailo". Visitors only see the line below. */
         if (residentsNote) {
+          residentsNote.hidden = false;
           residentsNote.textContent = state === 'unconfigured'
             ? 'Not yet connected — set GH_USER in site_photos.js.'
-            : 'No resident photos uploaded yet. Add them to profiles/residents in the buannel-photos repo — the filename becomes the name shown (e.g. lalrinliana-sailo.jpg → "Lalrinliana Sailo").';
+            : state === 'error'
+              ? 'Photos could not be loaded right now. Please try again later.'
+              : 'Resident photos will be added soon.';
         }
       }
     });
@@ -125,12 +132,17 @@ document.addEventListener('DOMContentLoaded', function () {
           fig.innerHTML = '<img src="' + f.download_url + '" alt="' + humanize(f.name) + '" loading="lazy">';
           activitiesGrid.appendChild(fig);
         });
-        if (activitiesNote) activitiesNote.textContent = images.length + ' photo' + (images.length === 1 ? '' : 's') + ', loaded automatically from the activities folder.';
+        if (activitiesNote) activitiesNote.hidden = true;
       } else {
+        /* ADMIN: add photos (cricket, badminton, Joint Hostel Sports...) to the activities folder in
+           this repo, directly inside it (no subfolders). Visitors only see the line below. */
         if (activitiesNote) {
+          activitiesNote.hidden = false;
           activitiesNote.textContent = state === 'unconfigured'
             ? 'Not yet connected — set GH_USER in site_photos.js.'
-            : 'No activity photos uploaded yet — add them to the activities folder in the buannel-photos repo (cricket, badminton, joint hostel sports, and so on).';
+            : state === 'error'
+              ? 'Photos could not be loaded right now. Please try again later.'
+              : 'Photos from hostel activities will be added soon.';
         }
       }
     });
